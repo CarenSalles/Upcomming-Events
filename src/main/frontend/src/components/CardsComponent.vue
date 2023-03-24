@@ -1,17 +1,17 @@
 <script setup>
-import { defineProps } from "vue";
+// import { defineProps } from "vue";
 
-import addButton from '../components/AddButton.vue'
-const props = defineProps({
-  event: {
-    type: Object
-  }
-})
-const emits = defineEmits(['addEvent'])
+// import addButton from '../components/AddButton.vue'
+// const props = defineProps({
+//   event: {
+//     type: Object
+//   }
+// })
+// const emits = defineEmits(['addEvent'])
 
-const emitAddEvent = () => {
-  emits('addEvent', props.event.id)
-}
+// const emitAddEvent = () => {
+//   emits('addEvent', props.event.id)
+// }
 
 
 </script>
