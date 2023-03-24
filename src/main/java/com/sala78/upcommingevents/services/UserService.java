@@ -39,9 +39,9 @@ public class UserService {
         return repository.findAll();
     }
 
-    public User addEvent(Long id, Long idEvent){
+    public User addEvent(String username, Long idEvent){
 
-        User userDB = repository.findById(id).orElseThrow();    
+        User userDB = repository.findByUsername(username).orElseThrow();  
         
         Event eventDBForId = eventRepository.findById(idEvent).orElseThrow();
 
@@ -54,8 +54,8 @@ public class UserService {
         return repository.save(userDB);
     }
 
-    public User deleteEventOfUser(Long idUser, Long idEvent){
-        User userDB = repository.findById(idUser).orElseThrow();    
+    public User deleteEventOfUser(String username, Long idEvent){
+        User userDB = repository.findByUsername(username).orElseThrow();      
         
         Set<Event> events = new HashSet<>();
 

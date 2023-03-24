@@ -4,10 +4,12 @@ import FeatureEvents from "../components/FeaturedEvents.vue"
 import CardsComponent from "../components/CardsComponent.vue";
 import { eventsStore } from "../stores/eventsStore";
 import { eventUserStore } from "../stores/eventUserStore";
+import {useRouter} from 'vue-router'
 
 
 const eventuserstore = eventUserStore();
 const eventstore = eventsStore();
+const router = useRouter();
 
 onBeforeMount(async() => {
 
@@ -18,6 +20,10 @@ onBeforeMount(async() => {
 const addHighlighte =(id) =>{
     eventuserstore.addToHeighlightedEvents(id);
 
+}
+
+const shotDetails=(id) =>{
+    router.push({name: 'detailsAdmin', params:{id:id}, props:{id:id}})
 }
 
 </script>
@@ -35,10 +41,11 @@ const addHighlighte =(id) =>{
         </section>
 
         <section class="all-events">
-            <div class="container-cards" v-for="event of eventuserstore.events">
+            <div class="container-cards" v-for="event of eventuserstore.events" >
             <CardsComponent
             :event="event"
-            @add-event="addHighlighte(event.id)"/>
+            @add-event="addHighlighte(event.id)"
+            @click="shotDetails(event.id)"/>
             </div>
 
         </section>

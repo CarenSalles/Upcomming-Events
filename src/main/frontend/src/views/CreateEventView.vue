@@ -2,9 +2,11 @@
 import CardsComponent from '../components/CardsComponent.vue';
 import DetailsForm from '../components/DetailsForm.vue';
 import { eventStore } from '../stores/eventStoreTest';
+import { useLoginStore } from '../stores/loginStore';
 import { onBeforeMount } from 'vue';
 
 const eventstore = eventStore();
+const loginstore = useLoginStore();
 
 onBeforeMount(async() => {
 
@@ -13,7 +15,7 @@ onBeforeMount(async() => {
 })
 
 const addUserToEvent=(id)=>{
-  eventstore.addUserToEvent(1,id)
+  eventstore.addUserToEvent(loginstore.username,id)
 }
 
 </script>

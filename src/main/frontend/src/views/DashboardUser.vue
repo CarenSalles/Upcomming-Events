@@ -4,9 +4,11 @@ import { onBeforeMount } from 'vue';
 import FeaturedEvents from '../components/FeaturedEvents.vue';
 import CardsComponent from '../components/CardsComponent.vue';
 import {useLoginStore} from '../stores/loginStore'
+import {useRouter} from 'vue-router'
 
 const eventstore = eventUserStore();
 const loginstore = useLoginStore();
+const router = useRouter();
 
 onBeforeMount(async() => {
 
@@ -16,6 +18,10 @@ onBeforeMount(async() => {
 
 const addUserToEvent=(id)=>{
   eventstore.addUserToEvent(loginstore.username, id)
+}
+
+const shotDetails=(id) =>{
+    router.push({name: 'detailsUser', params:{id:id}, props:{id:id}})
 }
 </script>
 
@@ -37,7 +43,8 @@ const addUserToEvent=(id)=>{
       <div class="container-cards" v-for="event of eventstore.events">
         <CardsComponent
         :event="event" 
-        @add-event="addUserToEvent(event.id)"/>
+        @add-event="addUserToEvent(event.id)"
+        @click="shotDetails(event.id)"/>
       </div> 
 
     </section>

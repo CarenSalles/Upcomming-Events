@@ -1,11 +1,22 @@
 <script setup>
 import CardsComponent from '../components/CardsComponent.vue';
 import DetailsForm from '../components/DetailsForm.vue';
-import { computed } from 'vue';
 import { useLoginStore } from '../stores/loginStore';
-import axios from 'axios';
+import { useRoute } from 'vue-router';
+import { eventsStore } from '../stores/eventsStore';
+import { onBeforeMount } from 'vue';
+
+const eventsstore = eventsStore();
+
 
 const useloginstore = useLoginStore();
+const route = useRoute()
+const idEvent = parseInt(route.params.id)
+
+onBeforeMount(async ()=>{
+    eventsstore.getOneEvent(idEvent)
+})
+
 
 const eventTemporal ={
     title: 'hola',
@@ -19,10 +30,11 @@ const eventTemporal ={
 <template>
 <div class="container">
     <CardsComponent
-    :event="eventTemporal"
+    :event="eventsstore.oneEvent"
     />
     <DetailsForm 
     :view="'edit'"
+    :id="idEvent"
     />
 </div>
 </template>

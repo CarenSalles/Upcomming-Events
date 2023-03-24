@@ -27,14 +27,10 @@ const router = createRouter({
               component: () => import("../views/DashboardUser.vue")
             },
             {
-              path: "details",
+              path: "details/:id",
               name: "detailsUser",
-              component: () => import("../views/UserDetails.vue")
-            },
-            {
-              path: "events",
-              name: "user",
-              component: () => import("../views/UserEventsView.vue")
+              component: () => import("../views/UserDetails.vue"),
+              props:route => ({ id: parseInt(route.params.id) })
             }
           ],
         },
@@ -48,7 +44,12 @@ const router = createRouter({
               name: "dashboardAdmin",
               component: () => import("../views/DashboardAdmin.vue")
             },
-          
+            {
+              path: "details/:id",
+              name: "detailsAdmin",
+              component: () => import("../views/AdminDetailsView.vue"),
+              props:route => ({ id: parseInt(route.params.id) })
+            }
           ],
         }
       ],

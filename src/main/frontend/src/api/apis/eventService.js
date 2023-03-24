@@ -20,6 +20,17 @@ export default class eventService{
 
         return getBody;
     }
+    async getOneEvent(idEvent){
+        axios.defaults.withCredentials = 'include'; 
+        const response = axios.get(this.baseUrl + `/events/${idEvent}`,{
+
+        });
+
+        const getBody = (await response);
+
+
+        return getBody;
+    }
     async createEvent (event){
         axios.defaults.withCredentials = 'include'; 
         const resp = axios.post(this.baseUrl + '/events',event,{
@@ -29,9 +40,9 @@ export default class eventService{
         return getEvent;
     }
 
-    async editEvent (event){
+    async editEvent (event,idEvent){
         axios.defaults.withCredentials = 'include'; 
-        const resp = axios.put(this.baseUrl + '/events/1',event,{
+        const resp = axios.put(this.baseUrl + `/events/${idEvent}`,event,{
         });
         const ediEvent = (await resp);
         return ediEvent;

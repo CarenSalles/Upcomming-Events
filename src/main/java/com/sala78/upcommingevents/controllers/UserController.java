@@ -47,10 +47,10 @@ public class UserController {
         }
     }
 
-    @PutMapping("/users/{id}/events/{idEvent}/add")
-    public ResponseEntity<Map<String,String>> addEvent(@PathVariable Long id, @PathVariable Long idEvent) {
+    @PutMapping("/users/{username}/events/{idEvent}/add")
+    public ResponseEntity<Map<String,String>> addEvent(@PathVariable String username, @PathVariable Long idEvent) {
         try {
-            service.addEvent(id, idEvent);
+            service.addEvent(username, idEvent);
             Map<String, String> json = new HashMap<>();
 
             json.put("message", "event added");
@@ -64,10 +64,10 @@ public class UserController {
         }
     }
 
-    @PutMapping("/users/{idUser}/events/{idEvent}/remove")
-    public ResponseEntity<Map<String,String>> removeEvent(@PathVariable Long idUser, @PathVariable Long idEvent) {
+    @PutMapping("/users/{username}/events/{idEvent}/remove")
+    public ResponseEntity<Map<String,String>> removeEvent(@PathVariable String username, @PathVariable Long idEvent) {
         try {
-            service.deleteEventOfUser(idUser, idEvent);
+            service.deleteEventOfUser(username, idEvent);
             Map<String, String> json = new HashMap<>();
 
             json.put("message", "event removed");

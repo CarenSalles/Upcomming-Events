@@ -18,7 +18,7 @@ const logOut = async ()=>{
                 <p @click="logOut()">Logout</p>
         
         </nav>
-        <h1>Buy Amazing Tickets at wholesale prices</h1>
+        <h1> Buy Amazing <span> Tickets </span> at wholesale prices.</h1>
         
     </header>
 </template>
@@ -26,7 +26,7 @@ const logOut = async ()=>{
 
 header{
     width: 100%;
-    height: 15%;
+    height: 20%;
     display: flex;
     flex-direction: column;
     background-image: url("../../assets/img/banner-img.png");
@@ -36,8 +36,50 @@ header{
         color: white;
         display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
+        justify-content:center;
+        gap: 1vh;
+        margin-right: 1vh;
+        margin-top: .5vh;
+        font-size: 1vh;
+           
+    }
+    h1{
+      font-size: 1.3vh; 
+      width: 100%;
+      margin-left: 2vh;
+      color: white;
+    }
+    
+    span{
+        color:rgb(248, 205, 13); ;
     }
 }
+
+@media (min-width: 1024px){
+ 
+    header{
+        height: 30vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
     
+    .nav-bar{
+    display: flex;
+    justify-content: end;
+    margin-inline: 3vw;
+    margin-top: 2vh;
+    gap: 3vw;
+    font-size: 3vh;
+ }
+ h1{
+    font-size: 6vw; 
+    width: 90%;
+    text-align: center;
+    margin-bottom: 3vh;
+
+    }
+ }
+}
+  
 </style>

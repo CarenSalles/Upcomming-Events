@@ -12,6 +12,9 @@ const useloginstore = useLoginStore();
 
 const props = defineProps(
   {
+    id:{
+      type:Number,
+    },
     view:{
       type: String,
       default: 'create'
@@ -37,7 +40,7 @@ function edit(){
    number_participants: capacity.value,
    description: description.value,
   };
-  eventstore.editEvents(events) 
+  eventstore.editEvents(events,props.id) 
 };
 
 const disable = computed(()=>{
